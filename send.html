@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Send Bitcoin</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #10142d;
+      color: #fff;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background-color: #1f2348;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    .btn-send {
+      margin-top: 20px;
+      background-color: #00bfa6;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .btn-send:hover {
+      background-color: #009e89;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Send Bitcoin</h2>
+
+    <form onsubmit="sendBTC(event)">
+      <label for="walletAddress">Recipient Wallet Address</label>
+      <input type="text" id="walletAddress" name="walletAddress" required />
+
+      <label for="amount">Amount (BTC)</label>
+      <input type="number" id="amount" name="amount" step="0.00000001" required />
+
+      <label for="note">Note (optional)</label>
+      <input type="text" id="note" name="note" />
+
+      <button type="submit" class="btn-send">Send</button>
+    </form>  <form method="GET" action="otp.html"><button type="submit">Withdraw</button>
+  </div>
+
+  <script>
+    function sendBTC(event) {
+      event.preventDefault();
+      const address = document.getElementById('walletAddress').value;
+      const amount = document.getElementById('amount').value;
+      const note = document.getElementById('note').value;
+
+      alert(`Sending ${amount} BTC to ${address}\nNote: ${note || 'Successfully'}`);
+      // Add API integration here (e.g., with Web3 or backend)
+    }
+  </script>
+
+</body>
+</html>

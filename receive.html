@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Receive Bitcoin</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #10142d;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background-color: #1f2348;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .qr-code {
+      margin: 20px 0;
+    }
+    .wallet-address {
+      background-color: #2c2f4a;
+      padding: 10px;
+      border-radius: 6px;
+      word-break: break-all;
+      font-family: monospace;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #00bfa6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #009e89;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Receive Bitcoin</h2>
+
+    <div class="qr-code">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" alt="Bitcoin QR Code">
+    </div>
+
+    <div class="wallet-address" id="walletAddress">
+      1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+    </div>
+
+    <button onclick="copyAddress()">Copy Address</button>
+  </div>
+
+  <script>
+    function copyAddress() {
+      const address = document.getElementById('walletAddress').textContent;
+      navigator.clipboard.writeText(address).then(() => {
+        alert('Wallet address copied to clipboard');
+      });
+    }
+  </script>
+
+</body>
+</html>

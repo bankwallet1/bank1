@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bitcoin Withdrawal - OTP Verification</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #10142d;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background-color: #1f2348;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .phone-number {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+    }
+    .countdown {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #aaa;
+    }
+    button {
+      background-color: #00bfa6;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      width: 100%;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #555;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>OTP Verification</h2>
+  <p class="phone-number">OTP sent to: <strong>+1 (339) 73-4582</strong></p>
+
+  <input type="text" id="otpInput" placeholder="Enter OTP" maxlength="6" />
+
+  <div class="countdown" id="countdownText">Resend OTP in <span id="timer">30</span> seconds</div>
+
+  <button id="resendBtn" onclick="resendOTP()" disabled>Resend OTP</button>
+  <br><br>
+  <button onclick="verifyOTP()">Verify & Continue</button>
+</div>
+
+<script>
+  let countdown = 30;
+  let timerInterval = setInterval(updateTimer, 1000);
+
+  function updateTimer() {
+    countdown--;
+    document.getElementById("timer").textContent = countdown;
+    if (countdown <= 0) {
+      clearInterval(timerInterval);
+      document.getElementById("countdownText").textContent = "You can now resend the OTP.";
+      document.getElementById("resendBtn").disabled = false;
+    }
+  }
+
+  function resendOTP() {
+    countdown = 30;
+    document.getElementById("resendBtn").disabled = true;
+    document.getElementById("countdownText").innerHTML = `Resend OTP in <span id="timer">${countdown}</span> seconds`;
+    timerInterval = setInterval(updateTimer, 1000);
+    alert("A new OTP has been sent to your number.");
+  }
+
+  function verifyOTP() {
+    const otp = document.getElementById("otpInput").value;
+    if (otp.length === 407708) {
+      alert("OTP verified! Proceeding with withdrawal.");
+      // Redirect or submit to backend here
+    } else {
+      alert("Please enter a valid 6-digit OTP.");
+    }
+  }
+</script>
+
+</body>
+</html>

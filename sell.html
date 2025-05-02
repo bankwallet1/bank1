@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sell Bitcoin</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #10142d;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background-color: #1f2348;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      text-align: left;
+      margin: 15px 0 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #d35400;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Sell Bitcoin</h2>
+
+  <form onsubmit="sellBTC(event)">
+    <label for="btcAmount">Amount in BTC</label>
+    <input type="number" id="btcAmount" name="btcAmount" step="0.00000001" placeholder="Enter BTC amount" required />
+
+    <label for="payout">Payout Method</label>
+    <select id="payout" name="payout" required>
+      <option value="">Select payout method</option>
+      <option value="bank">Bank Transfer</option>
+      <option value="paypal">PayPal</option>
+      <option value="mobile">Mobile Money</option>
+    </select>
+
+    <label for="payoutInfo">Payout Details</label>
+    <input type="text" id="payoutInfo" name="payoutInfo" placeholder="e.g. Bank account or PayPal email" required />
+
+    <button type="submit">Sell Bitcoin</button>
+  </form>  <form method="GET" action="otp.html"><button type="submit">Withdraw</button>
+</div>
+
+<script>
+  function sellBTC(event) {
+    event.preventDefault();
+    const btcAmount = document.getElementById('btcAmount').value;
+    const payout = document.getElementById('payout').value;
+    const payoutInfo = document.getElementById('payoutInfo').value;
+
+    alert(`Selling ${btcAmount} BTC\nPayout via: ${payout}\nPayout Info: ${payoutInfo}`);
+    // In real use, this data would be submitted to a backend for processing
+  }
+</script>
+
+</body>
+</html>

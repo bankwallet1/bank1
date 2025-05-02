@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bank Login with OTP</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    .login-container h2 {
+      text-align: center;
+    }
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background-color: #004481;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .otp-section {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container"> <img src="wels.jpeg" alt="Logo" class="logo">
+    <h2>Wells Fargo Bank Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="requestOTP()">Login</button>
+      
+       <form method="GET" action="dash2.html">
+       
+        <button type="submit">Dashbord</button>
+      </form>
+
+    <div class="otp-section" id="otpSection">
+      <input type="text" id="otp" placeholder="Enter OTP" />
+      <button onclick="verifyOTP()">Verify OTP</button>
+    </div> <img src="footer.png" alt="Logo" class="logo">
+  </div> 
+
+  <script>
+    function requestOTP() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username && password) {
+        alert('OTP has been sent to your registered Email/SMS.');
+        document.getElementById('otpSection').style.display = 'block';
+      } else {
+        alert('Please enter username and password first.');
+      }
+    }
+
+    function verifyOTP() {
+      const otp = document.getElementById('otp').value;
+      if (otp === "407708") { // Simulated OTP for demo
+        alert('Login successful! Go to Dashbord');
+      } else {
+        alert('Invalid OTP. Try again.');
+      }
+    }
+  </script> 
+    
+    
+    
+</body>
+</html>
